@@ -1,0 +1,13 @@
+name: lsvswis
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - ipykernel
+  - nomkl
+  - numpy
+  - pandas
+  - matplotlib
+  - pytorch
+  - scipy
+  - tqdm
