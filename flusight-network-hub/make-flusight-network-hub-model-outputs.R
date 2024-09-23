@@ -63,8 +63,10 @@ process_file <- function(model_dir, submission) {
     dplyr::summarize(
       output_type_id = list(q_levels),
       value = list(
-        # TODO: it may be better to drop the uppermost bin before doing this operation
-        distfromq::make_q_fn(ps = cumsum(value) / sum(value), qs = bin_upper, tail_dist = "norm")(q_levels)
+        distfromq::make_q_fn(
+          ps = c(0, cumsum(value) / sum(value)),
+          qs = c(0, bin_upper),
+          tail_dist = "norm")(q_levels)
       ),
       .groups = "drop"
     ) |>
